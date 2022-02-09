@@ -5,8 +5,12 @@ import data from './artical_data'
 // You can read about ES6 modules here: https://exploringjs.com/es6/ch_modules.html#sec_basics-of-es6-modules
 
 
-data.data.forEach((val)=>articleMaker(val)); 
-articleMaker({'title':'How to invert a binary tree!?!?','date':new Date(),firstParagraph:'Its really quite simple,Its really quite simpleIts really quite simpleIts really quite simpleIts really quite simple',secondParagraph:"Be sure to make the function recursive!Be sure to make the function recursive!Be sure to make the function recursive!Be sure to make the function recursive!Be sure to make the function recursive!",thirdParagraph:'Its really only a couple lines of code!Its really only a couple lines of code!Its really only a couple lines of code!Its really only a couple lines of code!Its really only a couple lines of code!'})
+const artticles = document.querySelector('.articles'); 
+
+
+
+data.data.forEach((val)=>artticles.appendChild(articleMaker(val))); 
+artticles.appendChild(articleMaker({'title':'How to invert a binary tree!?!?','date':new Date(),firstParagraph:'Its really quite simple,Its really quite simpleIts really quite simpleIts really quite simpleIts really quite simple',secondParagraph:"Be sure to make the function recursive!Be sure to make the function recursive!Be sure to make the function recursive!Be sure to make the function recursive!Be sure to make the function recursive!",thirdParagraph:'Its really only a couple lines of code!Its really only a couple lines of code!Its really only a couple lines of code!Its really only a couple lines of code!Its really only a couple lines of code!'}));
 function articleMaker(obj){
   let containerDiv = document.createElement('div');  
   containerDiv.classList.add('article'); 
@@ -20,8 +24,7 @@ function articleMaker(obj){
   expandButton.classList.add('expandButton'); 
   expandButton.addEventListener('click',()=>containerDiv.classList.toggle('article-open')); 
   appendAll(containerDiv,[title,date,firstParagraph,secondParagraph,thirdParagraph,expandButton])
-  document.body.append(containerDiv);
-  console.log(containerDiv)
+  return containerDiv; 
 }
 
 
